@@ -1,0 +1,10 @@
+require:
+  - sorbet-runtime
+  - rspec
+  - rspec/mocks
+
+gem:
+  exclude: []
+
+dsl:
+  exclude: []

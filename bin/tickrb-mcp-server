@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+# typed: true
+# frozen_string_literal: true
+
+require "dotenv/load"
+require "sorbet-runtime"
+require "optparse"
+
+require_relative "../lib/tickrb"
+
+# Parse command line options
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: tickrb-mcp-server [options]"
+
+  opts.on("--client-id ID", "TickTick OAuth Client ID") do |client_id|
+    options[:client_id] = client_id
+  end
+
+  opts.on("--client-secret SECRET", "TickTick OAuth Client Secret") do |client_secret|
+    options[:client_secret] = client_secret
+  end
+
+  opts.on("--redirect-uri URI", "OAuth redirect URI") do |redirect_uri|
+    options[:redirect_uri] = redirect_uri
+  end
+
+  opts.on("-h", "--help", "Prints this help") do
+    puts opts
+    exit
+  end
+end.parse!
+
+Tickrb.mcp_server(options)
