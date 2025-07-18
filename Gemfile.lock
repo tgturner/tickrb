@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tickrb (0.1.0)
+    tickrb (0.1.1)
       net-http
       sorbet-runtime
       uri
@@ -123,6 +123,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-22
+  x86_64-darwin-23
 
 DEPENDENCIES
   dotenv
