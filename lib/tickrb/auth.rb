@@ -25,9 +25,24 @@ module Tickrb
     end
 
     def initialize(client_id: nil, client_secret: nil, redirect_uri: nil, token_store: nil)
-      @client_id = client_id || ENV["CLIENT_ID"]
-      @client_secret = client_secret || ENV["CLIENT_SECRET"]
-      @redirect_uri = redirect_uri || ENV["REDIRECT_URI"]
+      @client_id = if client_id.nil? || client_id.empty?
+        ENV["CLIENT_ID"]
+      else
+        client_id
+      end
+
+      @client_secret = if client_secret.nil? || client_secret.empty?
+        ENV["CLIENT_SECRET"]
+      else
+        client_secret
+      end
+
+      @redirect_uri = if redirect_uri.nil? || redirect_uri.empty?
+        ENV["REDIRECT_URI"]
+      else
+        redirect_uri
+      end
+
       @token_store = token_store || TokenStore
     end
 
